@@ -1,41 +1,41 @@
-======================================[0909]======================================
+ï»¿======================================[0909]======================================
 
-¤± ½ºÇÁ¸µ ¼³Á¤ÆÄÀÏ 
-   - .javaÆÄÀÏ
+ã… ìŠ¤í”„ë§ ì„¤ì •íŒŒì¼ 
+   - .javaíŒŒì¼
    - .xml + .java 
-   - .xmlÆÄÀÏ
-	> sts ==> https://spring.io/tools3/sts/all ==> windows ´Ù¿î·Îµå
-	> B_Util - 3.Eclipse - sts-bundle - sts-3.9.9.RELEASE - STS.exe¸¦ ¹ÙÅÁÀ¸·Î
-	> °æ·Î: E:\A_TeachingMaterial\7.JspSpring\springworkspace
+   - .xmlíŒŒì¼
+	> sts ==> https://spring.io/tools3/sts/all ==> windows ë‹¤ìš´ë¡œë“œ
+	> B_Util - 3.Eclipse - sts-bundle - sts-3.9.9.RELEASE - STS.exeë¥¼ ë°”íƒ•ìœ¼ë¡œ
+	> ê²½ë¡œ: E:\A_TeachingMaterial\7.JspSpring\springworkspace
 
-   - 201906eclipse¿¡¼­ export - preferences - Export all Ã¼Å©ÇÏ°í 
-     ÆÄÀÏ¸í jspsettingÀ¸·Î finish
+   - 201906eclipseì—ì„œ export - preferences - Export all ì²´í¬í•˜ê³  
+     íŒŒì¼ëª… jspsettingìœ¼ë¡œ finish
 
-   - sts¿¡¼­ import - preferences - Import all - ¾Æ±î exportÇÑ ÆÄÀÏ ¼±ÅÃ finish
+   - stsì—ì„œ import - preferences - Import all - ì•„ê¹Œ exportí•œ íŒŒì¼ ì„ íƒ finish
 
-   - sts¸¦ »ç¿ëÇÏ´Â °¡Àå Å« ÀÌÀ¯ ==> bean ¼±¾ðÇÏ±â¿¡ ÆíÇÔ(À§ÀÚµå¸¦ Á¦°øÇÔ)
+   - stsë¥¼ ì‚¬ìš©í•˜ëŠ” ê°€ìž¥ í° ì´ìœ  ==> bean ì„ ì–¸í•˜ê¸°ì— íŽ¸í•¨(ìœ„ìžë“œë¥¼ ì œê³µí•¨)
 
-¤± Framework¿Í libraryÀÇ Â÷ÀÌ
-   - Library: ÇÁ·Î±×·¥ È£Ãâ¿¡ ÀÇÇÑ Á¦¾î
-	      Á¤ÀÇµÈ ´ë·Î »ç¿ë ==> logger.debug()
-              ¿øº» Library ÀçÁ¤ÀÇ °¡´É
+ã… Frameworkì™€ libraryì˜ ì°¨ì´
+   - Library: í”„ë¡œê·¸ëž¨ í˜¸ì¶œì— ì˜í•œ ì œì–´
+	      ì •ì˜ëœ ëŒ€ë¡œ ì‚¬ìš© ==> logger.debug()
+              ì›ë³¸ Library ìž¬ì •ì˜ ê°€ëŠ¥
 
-   - Framework: ÇÁ·Î±×·¥ÀÇ Èå¸§ÀÌ ÇÁ·¹ÀÓ¿öÅ©¿¡ ÀÇÇØ Á¦¾î
-                ±â´É È®Àå °¡´É
-                Framework ÀÚÃ¼´Â ¼öÁ¤ºÒ°¡(¼öÁ¤Àº °¡´ÉÇÏÁö¸¸ ¿øº»±â´ÉÀÌ ÀÛµ¿ÇÏÁö ¾ÊÀ» ¼ö ÀÖ´Ù)
+   - Framework: í”„ë¡œê·¸ëž¨ì˜ íë¦„ì´ í”„ë ˆìž„ì›Œí¬ì— ì˜í•´ ì œì–´
+                ê¸°ëŠ¥ í™•ìž¥ ê°€ëŠ¥
+                Framework ìžì²´ëŠ” ìˆ˜ì •ë¶ˆê°€(ìˆ˜ì •ì€ ê°€ëŠ¥í•˜ì§€ë§Œ ì›ë³¸ê¸°ëŠ¥ì´ ìž‘ë™í•˜ì§€ ì•Šì„ ìˆ˜ ìžˆë‹¤)
 
-   - Framework¸¦ »ç¿ëÇÏ´Â ÀÌÀ¯
-	> ½Ã½ºÅÛÀÇ ±â´É¿Ü¿¡ ÇÊ¿äÇÑ ºñ±â´É ¿ä¼ÒµéÀ» Á¦°ø¹ÞÀ» ¼ö ÀÖ´Ù.
-	  ==> ½Ã½ºÅÛ ±¸Ãà½Ã¸¶´Ù ¹Ýº¹ÀûÀ¸·Î ºñ±â´É ¿ä¼Ò¸¦ ±¸ÇöÇÒ ÇÊ¿ä°¡ ¾ø´Ù.
-	      (ºñ±â´É: DB connection °ü¸®, transaction Á¦¾î)
-	      (±â´É: ÀÎ»ç½Ã½ºÅÛÀÇ »ç¿øÁ¤º¸ ÀúÀå/Á¶È¸/º¯°æ, »ó´ã ½Ã½ºÅÛÀÇ »ó´ã ³»¿ë ÀÔ·Â)
-	> ºñÁö´Ï½º ·ÎÁ÷ ±¸Çö¿¡ ÁýÁßÇÒ ¼ö ÀÖ´Ù.
-	> ºñ±â´É ¿ä¼ÒµéÀ» Á÷Á¢ ±¸ÇöÇÒ ÀÚ½ÅÀÌ ¾ø´Ù.
+   - Frameworkë¥¼ ì‚¬ìš©í•˜ëŠ” ì´ìœ 
+	> ì‹œìŠ¤í…œì˜ ê¸°ëŠ¥ì™¸ì— í•„ìš”í•œ ë¹„ê¸°ëŠ¥ ìš”ì†Œë“¤ì„ ì œê³µë°›ì„ ìˆ˜ ìžˆë‹¤.
+	  ==> ì‹œìŠ¤í…œ êµ¬ì¶•ì‹œë§ˆë‹¤ ë°˜ë³µì ìœ¼ë¡œ ë¹„ê¸°ëŠ¥ ìš”ì†Œë¥¼ êµ¬í˜„í•  í•„ìš”ê°€ ì—†ë‹¤.
+	      (ë¹„ê¸°ëŠ¥: DB connection ê´€ë¦¬, transaction ì œì–´)
+	      (ê¸°ëŠ¥: ì¸ì‚¬ì‹œìŠ¤í…œì˜ ì‚¬ì›ì •ë³´ ì €ìž¥/ì¡°íšŒ/ë³€ê²½, ìƒë‹´ ì‹œìŠ¤í…œì˜ ìƒë‹´ ë‚´ìš© ìž…ë ¥)
+	> ë¹„ì§€ë‹ˆìŠ¤ ë¡œì§ êµ¬í˜„ì— ì§‘ì¤‘í•  ìˆ˜ ìžˆë‹¤.
+	> ë¹„ê¸°ëŠ¥ ìš”ì†Œë“¤ì„ ì§ì ‘ êµ¬í˜„í•  ìžì‹ ì´ ì—†ë‹¤.
 
-	> ÀåÁ¡: ±¸Çö/À¯Áöº¸¼öÀÇ ÆíÀÌ
-	> ´ÜÁ¡: °³¹ßÀÚµéÀÇ ¿ª·® È¹ÀÏÈ­
+	> ìž¥ì : êµ¬í˜„/ìœ ì§€ë³´ìˆ˜ì˜ íŽ¸ì´
+	> ë‹¨ì : ê°œë°œìžë“¤ì˜ ì—­ëŸ‰ íšì¼í™”
 
-	> Áï, °³¹ßÀÚµéÀÌ ºñÁö´Ï½º ·ÎÁ÷¿¡¸¸ ÁýÁßÇÒ ¼ö ÀÖµµ·Ï Áö¿øÇÑ´Ù. 
+	> ì¦‰, ê°œë°œìžë“¤ì´ ë¹„ì§€ë‹ˆìŠ¤ ë¡œì§ì—ë§Œ ì§‘ì¤‘í•  ìˆ˜ ìžˆë„ë¡ ì§€ì›í•œë‹¤. 
 
 
 
@@ -43,72 +43,72 @@
 
 ======================================[0910]======================================
 
-¡Ú ÇöÀç °¡Áö°í ÀÖ´Â Áö½ÄÀ¸·Î ÀÌÇØÇÒ ¼ö ÀÖµµ·Ï ÄÚµå ÀÛ¼º ¡Ú
+â˜… í˜„ìž¬ ê°€ì§€ê³  ìžˆëŠ” ì§€ì‹ìœ¼ë¡œ ì´í•´í•  ìˆ˜ ìžˆë„ë¡ ì½”ë“œ ìž‘ì„± â˜…
 
-¤± IOC(Inversion of Control): Á¦¾îÀÇ ¿ªÀü, ¸ðµç Á¾·ùÀÇ ÀÛ¾÷À» »ç¿ëÇÏ´Â ÂÊ¿¡¼­ Á¦¾î
+ã… IOC(Inversion of Control): ì œì–´ì˜ ì—­ì „, ëª¨ë“  ì¢…ë¥˜ì˜ ìž‘ì—…ì„ ì‚¬ìš©í•˜ëŠ” ìª½ì—ì„œ ì œì–´
 
-¤± ÇÁ·ÎÁ§Æ® »ý¼º: 
-   1. À§ÀÚµå - maven project - create a simple project Ã¼Å© -
+ã… í”„ë¡œì íŠ¸ ìƒì„±: 
+   1. ìœ„ìžë“œ - maven project - create a simple project ì²´í¬ -
       kr.or.ddit / spring / 0.0.1-SNAPSHOT / war - finish
-   2. ÇÁ·ÎÁ§Æ® ¿ìÅ¬¸¯ - java ee - generate deployment~~ - »ý¼ºµÈ web.xmlÀÇ ¹öÀüÀ»
-      2.5¿¡¼­ 3.0À¸·Î º¯°æ
+   2. í”„ë¡œì íŠ¸ ìš°í´ë¦­ - java ee - generate deployment~~ - ìƒì„±ëœ web.xmlì˜ ë²„ì „ì„
+      2.5ì—ì„œ 3.0ìœ¼ë¡œ ë³€ê²½
 
-¤± Å×½ºÆ® ÄÚµå ==> ÄÁÅ×ÀÌ³Ê¸¦ »ç¿ëÇÏÁö¸¸, Á÷Á¢ ¸¸µå´Â°Ç ÀÌ¹øÀÌ Ã³À½(¿¹½ÃÀÓ)
-   - src/test/resources/kr/or/ddit/spring/ioc¿¡¼­ Spring Bean Configuration File
+ã… í…ŒìŠ¤íŠ¸ ì½”ë“œ ==> ì»¨í…Œì´ë„ˆë¥¼ ì‚¬ìš©í•˜ì§€ë§Œ, ì§ì ‘ ë§Œë“œëŠ”ê±´ ì´ë²ˆì´ ì²˜ìŒ(ì˜ˆì‹œìž„)
+   - src/test/resources/kr/or/ddit/spring/iocì—ì„œ Spring Bean Configuration File
      => application-context-test.xml
-	<!--  name: ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê¿¡¼­ °ü¸®µÇ´Â °´Ã¼ÀÇ ÀÌ¸§ - °³¹ßÀÚ°¡ ÀÛ¼º -->
-	<!-- class: ÇØ´ç ½ºÇÁ¸µ °´Ã¼ÀÇ ±¸Çö Å¬·¡½ºÀÇ full name -->
+	<!--  name: ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆì—ì„œ ê´€ë¦¬ë˜ëŠ” ê°ì²´ì˜ ì´ë¦„ - ê°œë°œìžê°€ ìž‘ì„± -->
+	<!-- class: í•´ë‹¹ ìŠ¤í”„ë§ ê°ì²´ì˜ êµ¬í˜„ í´ëž˜ìŠ¤ì˜ full name -->
 	<bean name="boardDao" class="kr.or.ddit.test.board.dao.BoardDao"/>
 
-	<!-- boardService¶ó´Â ÀÌ¸§À¸·Î  kr.or.ddit.test.board.service.BoardService Å¬·¡½º¸¦ ÀÌ¿ëÇÏ¿© ½ºÇÁ¸µ°´Ã¼ »ý¼º-->
-	<!-- BoardService Å¬·¡½ºÀÇ boardDaoÇÊµå(<property name>)¿¡ boardDao¶ó´Â ÀÌ¸§ÀÇ ½ºÇÁ¸µ ºó(<property ref>)À» ÁÖÀÔ -->
+	<!-- boardServiceë¼ëŠ” ì´ë¦„ìœ¼ë¡œ  kr.or.ddit.test.board.service.BoardService í´ëž˜ìŠ¤ë¥¼ ì´ìš©í•˜ì—¬ ìŠ¤í”„ë§ê°ì²´ ìƒì„±-->
+	<!-- BoardService í´ëž˜ìŠ¤ì˜ boardDaoí•„ë“œ(<property name>)ì— boardDaoë¼ëŠ” ì´ë¦„ì˜ ìŠ¤í”„ë§ ë¹ˆ(<property ref>)ì„ ì£¼ìž… -->
 	<bean name="boardService" class="kr.or.ddit.test.board.service.BoardService">
-		<property name="boardDao" ref="boardDao"/>  <!-- À§¿¡ ÀûÈù boardDao¸¦ ÁÖÀÔ -->
-		<property name="boardNm"  value="Q/A°Ô½ÃÆÇ"/> <!-- ¹®ÀÚ¿­ Q/A°Ô½ÃÆÇÀ» ÁÖÀÔ -->
+		<property name="boardDao" ref="boardDao"/>  <!-- ìœ„ì— ì ížŒ boardDaoë¥¼ ì£¼ìž… -->
+		<property name="boardNm"  value="Q/Aê²Œì‹œíŒ"/> <!-- ë¬¸ìžì—´ Q/Aê²Œì‹œíŒì„ ì£¼ìž… -->
 	</bean>
 
    - src/test/java/kr/or/ddit/board/dao => IBoardDao.java / BoardDao.java
 
    - src/test/java/kr/or/ddit/board => Main.java
-	1. spring ioc ÄÁÅ×ÀÌ³Ê¸¦ ÀÌ¿ëÇÑ °´Ã¼ »ý¼º(°´Ã¼¸¦ ¸¸µå´Â ¼³¸í¼­¸¦ springÇÑÅ× À§ÀÓ)
+	1. spring ioc ì»¨í…Œì´ë„ˆë¥¼ ì´ìš©í•œ ê°ì²´ ìƒì„±(ê°ì²´ë¥¼ ë§Œë“œëŠ” ì„¤ëª…ì„œë¥¼ springí•œí…Œ ìœ„ìž„)
 	ApplicationContext context = new ClassPathXmlApplicationContext
 		("classpath:kr/or/ddit/spring/ioc/application-context-test.xml");
 
-	2. ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê·Î(==ioc ÄÁÅ×ÀÌ³Ê)ºÎÅÍ ¿øÇÏ´Â °´Ã¼¸¦ ¿äÃ»: DL(Dependency Lookup)
+	2. ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆë¡œ(==ioc ì»¨í…Œì´ë„ˆ)ë¶€í„° ì›í•˜ëŠ” ê°ì²´ë¥¼ ìš”ì²­: DL(Dependency Lookup)
 	IBoardDao cDao = (IBoardDao)context.getBean("boardDao");
 	IBoardService cService = context.getBean("boardService", IBoardService.class);
 
-¤± boardDao ±¸ÇöÃ¼¸¦ ¼³Á¤ÇÒ ¼ö ÀÖ´Â ¹æ¹ý
-   1. Á÷Á¢ ¸¸µé±â
-	==> »ý¼ºÀÚ¿¡¼­ new BoardDao() <-- jsp½Ã°£¿¡ ÇßÀ¸³ª ÁÁÀº ¹æ½ÄÀÌ ¾Æ´Ô(ºÐ¸®°¡ Èûµê)
-   2. ¿ÜºÎ¿¡¼­ ÁÖÀÔ 
+ã… boardDao êµ¬í˜„ì²´ë¥¼ ì„¤ì •í•  ìˆ˜ ìžˆëŠ” ë°©ë²•
+   1. ì§ì ‘ ë§Œë“¤ê¸°
+	==> ìƒì„±ìžì—ì„œ new BoardDao() <-- jspì‹œê°„ì— í–ˆìœ¼ë‚˜ ì¢‹ì€ ë°©ì‹ì´ ì•„ë‹˜(ë¶„ë¦¬ê°€ íž˜ë“¦)
+   2. ì™¸ë¶€ì—ì„œ ì£¼ìž… 
 	==> .setter( setBoardDao(IBoardDao boardDao) )
 	==> .constructor( public BoardService(IBoardDao boardDao) )
 
-¤± DI: ÄÁÅ×ÀÌ³Ê°¡ ºó ¼³Á¤ Á¤º¸¸¦ ¹ÙÅÁÀ¸·Î ÀÇÁ¸¼ºÀ» °í·ÁÇÏ¿© °´Ã¼(bean)¸¦ ÁÖÀÔ
-	=> XML, java annotation ¼³Á¤
-	ex) boardService¿¡ boardDao °´Ã¼ ÁÖÀÔ => ¸¹ÀÌ »ç¿ë
+ã… DI: ì»¨í…Œì´ë„ˆê°€ ë¹ˆ ì„¤ì • ì •ë³´ë¥¼ ë°”íƒ•ìœ¼ë¡œ ì˜ì¡´ì„±ì„ ê³ ë ¤í•˜ì—¬ ê°ì²´(bean)ë¥¼ ì£¼ìž…
+	=> XML, java annotation ì„¤ì •
+	ex) boardServiceì— boardDao ê°ì²´ ì£¼ìž… => ë§Žì´ ì‚¬ìš©
 
-¤± DL: ÄÁÅ×ÀÌ³Ê¿¡ ¼³Á¤µÈ ºóÀ» ÂüÁ¶
-	ex) applicationContext°´Ã¼·Î ºÎÅÍ boardService°´Ã¼¸¦ ÂüÁ¶ => Àß »ç¿ë ¾ÈÇÔ
+ã… DL: ì»¨í…Œì´ë„ˆì— ì„¤ì •ëœ ë¹ˆì„ ì°¸ì¡°
+	ex) applicationContextê°ì²´ë¡œ ë¶€í„° boardServiceê°ì²´ë¥¼ ì°¸ì¡° => ìž˜ ì‚¬ìš© ì•ˆí•¨
 
-¤± ¸í½ÃÀû Æ®·£Àè¼Ç: °³¹ßÀÚ°¡ Á÷Á¢ commitÇÏ´Â °Í ==> sqlSession.commit();
-   ¼±¾ðÀû Æ®·£Àè¼Ç: Æ¯Á¤ ¿¹¿Ü½Ã ÀÚµ¿À¸·Î rollback, ¾Æ´Ï¸é commit
+ã… ëª…ì‹œì  íŠ¸ëžœìž­ì…˜: ê°œë°œìžê°€ ì§ì ‘ commití•˜ëŠ” ê²ƒ ==> sqlSession.commit();
+   ì„ ì–¸ì  íŠ¸ëžœìž­ì…˜: íŠ¹ì • ì˜ˆì™¸ì‹œ ìžë™ìœ¼ë¡œ rollback, ì•„ë‹ˆë©´ commit
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-¡Ú ¾ÕÀ¸·Î »ç¿ëÇÒ spring ÄÚµå ÀÛ¼º ¡Ú
+â˜… ì•žìœ¼ë¡œ ì‚¬ìš©í•  spring ì½”ë“œ ìž‘ì„± â˜…
 
-¤± Spring Annotation ==> junit ¿¹½Ã
+ã… Spring Annotation ==> junit ì˜ˆì‹œ
 
-// @Test ¸Þ¼Òµå°¡ ½ÇÇàµÇ±â Àü¿¡ Á¦°øÇÑ Á¶¸³ ¼³¸í¼­¸¦ ¹ÙÅÁÀ¸·Î ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê¸¦ ±¸Ãà
-// @ResourceÀ» ÀÌ¿ëÇØ¼­ junitÅ¬·¡½ºÀÇ ÇÊµå¿¡ ½ºÇÁ¸µ ºóÀ» ¼Õ½±°Ô ÁÖÀÔ¹ÞÀ» ¼ö ÀÖ´Ù.
+// @Test ë©”ì†Œë“œê°€ ì‹¤í–‰ë˜ê¸° ì „ì— ì œê³µí•œ ì¡°ë¦½ ì„¤ëª…ì„œë¥¼ ë°”íƒ•ìœ¼ë¡œ ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆë¥¼ êµ¬ì¶•
+// @Resourceì„ ì´ìš©í•´ì„œ junití´ëž˜ìŠ¤ì˜ í•„ë“œì— ìŠ¤í”„ë§ ë¹ˆì„ ì†ì‰½ê²Œ ì£¼ìž…ë°›ì„ ìˆ˜ ìžˆë‹¤.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:kr/or/ddit/spring/ioc/application-context-test.xml")
 public class SpringContainerTest {
 
-	// name: ½ºÇÁ¸µ ºó ÀÌ¸§
-	// boardDao¶ó´Â ÀÌ¸§ÀÇ ½ºÇÁ¸µ ºóÀ» ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê·ÎºÎÅÍ Ã£¾Æ boardDaoÇÊµå¿¡ ÁÖÀÔ
+	// name: ìŠ¤í”„ë§ ë¹ˆ ì´ë¦„
+	// boardDaoë¼ëŠ” ì´ë¦„ì˜ ìŠ¤í”„ë§ ë¹ˆì„ ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆë¡œë¶€í„° ì°¾ì•„ boardDaoí•„ë“œì— ì£¼ìž…
 	@Resource(name="boardDao")
 	private IBoardDao boardDao;
 	
@@ -118,74 +118,139 @@ public class SpringContainerTest {
 	}
 }
 
-¤± BeanÀÇ scope ==> ±âº»°ªÀº singleton
-   - singleton: beanÀ» ÄÁÅ×ÀÌ³Ê¿¡ ÇÏ³ª¾¿¸¸ »ý¼º
-		springÄÁÅ×ÀÌ³Ê¿¡¼­ °°Àº ÀÌ¸§ÀÇ beanÀº ÇÏ³ª¸¸ Á¸Àç
-		(µðÀÚÀÎ ÆÐÅÏ°ú ´Ù¸£°Ô °°Àº Å¬·¡½º¿¡¼­ ´Ù¸¥ ÀÌ¸§(id == name)À» °®´Â
-		½ºÇÁ¸µ ºóÀÌ Á¸Àç °¡´É)
-   - prototype: beanÀ» ¿äÃ»ÇÒ ¶§ ¸¶´Ù »õ·Î¿î ºóÀ» »ý¼º
-   - request: http request¸¶´Ù »ý¼º(WebApplicationContext¿¡¸¸ Àû¿ë)
-   - session: http session´ç ÇÏ³ªÀÇ °´Ã¼¸¦ »ý¼º(WebApplicationContext¿¡¸¸ Àû¿ë)
+ã… Beanì˜ scope ==> ê¸°ë³¸ê°’ì€ singleton
+   - singleton: beanì„ ì»¨í…Œì´ë„ˆì— í•˜ë‚˜ì”©ë§Œ ìƒì„±
+		springì»¨í…Œì´ë„ˆì—ì„œ ê°™ì€ ì´ë¦„ì˜ beanì€ í•˜ë‚˜ë§Œ ì¡´ìž¬
+		(ë””ìžì¸ íŒ¨í„´ê³¼ ë‹¤ë¥´ê²Œ ê°™ì€ í´ëž˜ìŠ¤ì—ì„œ ë‹¤ë¥¸ ì´ë¦„(id == name)ì„ ê°–ëŠ”
+		ìŠ¤í”„ë§ ë¹ˆì´ ì¡´ìž¬ ê°€ëŠ¥)
+   - prototype: beanì„ ìš”ì²­í•  ë•Œ ë§ˆë‹¤ ìƒˆë¡œìš´ ë¹ˆì„ ìƒì„±
+   - request: http requestë§ˆë‹¤ ìƒì„±(WebApplicationContextì—ë§Œ ì ìš©)
+   - session: http sessionë‹¹ í•˜ë‚˜ì˜ ê°ì²´ë¥¼ ìƒì„±(WebApplicationContextì—ë§Œ ì ìš©)
 
-   * 4°¡Áö°¡ ÀÖÁö¸¸, singleton¸¸ »ç¿ëÇÔ
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   * 4ê°€ì§€ê°€ ìžˆì§€ë§Œ, singletonë§Œ ì‚¬ìš©í•¨
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ã… annotation-base
+   - ëª¨ë“  ë¹ˆì„ ëª…ì‹œì ìœ¼ë¡œ ê¸°ìˆ í•˜ëŠ”ë°ëŠ” ë¹„ìš©ì´ í¬ë‹¤.
+   - baseíŒ¨í‚¤ì§€ í•˜ìœ„ì— ì†í•œ í´ëž˜ìŠ¤ ì¤‘ @Controller, @Service, @Repository, @Component
+     ì–´ë…¸í…Œì´ì…˜ì´ ì„¤ì •ì„ í™•ì¸í•˜ì—¬ spring beanìœ¼ë¡œ ìžë™ìœ¼ë¡œ ë“±ë¡í•´ì¤€ë‹¤.
+   - annotation-configë¥¼ í†µí•´ ë‹¤ìŒì˜ ì–´ë…¸í…Œì´ì…˜ì„ ì²˜ë¦¬í•˜ëŠ” BeanPostProcessor ë“±ë¡ì„
+     ê°„íŽ¸í•˜ê²Œ í•  ìˆ˜ ìžˆë‹¤.
+
+<beans ......>
+	<context:component-scan base-package="kr.or.ddit, kr.or.ccit"/>
+
+	<!-- ìŠ¤ìº” ì´í›„ì— @Resource ì–´ë…¸í…Œì´ì…˜ì— ëŒ€í•œ í›„ì²˜ë¦¬ -->	
+	<context:annotation-config/>
+
+	<!--
+	  <bean>ì—˜ë ˆë©˜íŠ¸ë¥¼ ì´ìš©í•˜ì—¬ ìŠ¤í”„ë§ ë¹ˆìœ¼ë¡œ ë“±ë¡í•˜ë˜ ë°©ì‹ì—ì„œ 
+	  íŠ¹ì • íŒ¨í‚¤ì§€ ì´í•˜ì˜ í´ëž˜ìŠ¤ë¥¼ ìŠ¤ìº”í•˜ë©° @Controller, @Service, @Repository, @Component
+	  ì–´ë…¸í…Œì´ì…˜ì´ ë¶™ì€ í´ëž˜ìŠ¤ë“¤ì„ ìžë™ìœ¼ë¡œ ìŠ¤í”„ë§ ë¹ˆìœ¼ë¡œ ìƒì„±
+	 -->
+	<context:component-scan base-package="kr.or.ddit"/>
+
+	<!--
+	   ìŠ¤ìº” ì´í›„ì— @Resource, @Autowired, @Qualifier, @Required,
+	   @PostConstruct, @PreDestory, @Configuration ì–´ë…¸í…Œì´ì…˜ì— ëŒ€í•œ í›„ì²˜ë¦¬
+	   (ìˆ˜ì—…ì‹œê°„ì—” ëŒ€ë¶€ë¶„ @Resourceë§Œ ì‚¬ìš©í•  ì˜ˆì •) 
+	-->	
+	<context:annotation-config/>
+</beans>
+
+   * @Resource(name="boardDao") <== BoardDaoí´ëž˜ìŠ¤ë¥¼ ì‚¬ìš©í•˜ëŠ” ë°©ë²•(ì²«ê¸€ìž ì†Œë¬¸ìž)
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ã… ìžë°” í´ëž˜ìŠ¤ë¥¼ ìŠ¤í”„ë§ ì„¤ì •íŒŒì¼ë¡œ ë§Œë“¤ê¸°
+   * component-scanì„ ì‚¬ìš©í•˜ëŠ” ê²ƒê³¼ ìžë°” í´ëž˜ìŠ¤ë¥¼ ì‚¬ìš©í•˜ëŠ” ë‘ ê°€ì§€ ë°©ë²•ì— ëŒ€í•´
+     ì•Œê³  ìžˆì–´ì•¼ í•œë‹¤.
+
+	@Configuration
+	@ComponentScan(basePackages = "kr.or.ddit")
+	public class ApplicationJavaConfigScanT1 { } 
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+1. í”„ë¡œì íŠ¸ ì‹ ê·œìƒì„±
+2. pom, gitignore, logback.xml ì„¤ì •íŒŒì¼ ë³µì‚¬
+3. userDao, userService
+   - xml: <bean>, scan
+   - java: @Bean, scan
+
+â˜… ìœ„ ì‚¬í•­ì˜ í…ŒìŠ¤íŠ¸ì½”ë“œë¥¼ ì •ìƒì ìœ¼ë¡œ ìƒì„±í•˜ì—¬ í…ŒìŠ¤íŠ¸ ì½”ë“œë¥¼ í†µê³¼í•˜ê²Œë” ì—°ìŠµí•  ê²ƒ
+
+
+
+
+
+======================================[0911]======================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
