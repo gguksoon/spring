@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lprod">
+	<select id="getLprodList" resultType="lprod">
+		select * 
+		  from lprod
+	</select>
+	
+	<select id="getLprod" parameterType="String" resultType="hashmap">
+		select lprod_nm, lprod_gu, buyer_name, prod_id, prod_name, prod_price
+  		  from prod, lprod, buyer
+ 		 where lprod_gu = #{lprod_gu}
+   		   and prod_lgu = lprod_gu
+   		   and prod_buyer = buyer_id
+	</select>
+	
+	<!-- 제품 그룹 페이징 리스트 조회 -->
+	<select id="getLprodPagingList" resultType="lprod" parameterType="page">
+		select a.*
+  		  from (select rownum rn, a.*
+		          from (select *
+		                  from lprod
+		                 order by lprod_id) a) a
+		 where rn between (#{pagesize} * (#{page} - 1) + 1) and (#{pagesize} * #{page})
+	</select>
+	
+	<select id="getLprodTotalCnt" resultType="int">
+		select count(*)
+		  from lprod
+	</select>
+	
+</mapper>

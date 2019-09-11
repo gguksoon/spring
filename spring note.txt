@@ -171,7 +171,79 @@ public class SpringContainerTest {
 	@ComponentScan(basePackages = "kr.or.ddit")
 	public class ApplicationJavaConfigScanT1 { } 
 
+
+
+
+
+======================================[0911]======================================
+
+ㅁ spring에서의 형변환 문제
+   - xml 설정 파일에서 value속성을 주입할 때
+     <bean id="xxx" class="zz.aa.Class">
+	<property name="userId" value="brown"/>
+	<property name="reg_dt" value="2019-08-08"/>
+     </bean>
+
+   - spring web mvc모듈에서 파라미터를 command객체(from객체, vo)로 자동 바인딩시
+     형변환 문제가 발생(파라미터는 문자열 -> command객체의 date필드에 주입)
+
+   - 해결책 3가지
+	> propertyEditor
+	> conversionService
+	> formatting conversionService <-- 주로 사용함
+
+ㅁ propertyEditor (kr.or.ddit.type => CustomDatePropertyEditor.java)
+   - 클래스에 PropertyEditorRegistar인터페이스 구현하기
+   - quick pix를 통해 registerCustomEditors메서드를 생성
+   - 메서드 내부에 
+	registry.registerCustomEditor(
+		Date.class, new CustomDateEditor(
+			new SimpleDateFormat("yyyy-MM-dd"), true
+		)
+	);
+   - bean
+	<bean name="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="propertyEditorRegistrars">
+			<list>
+				<bean class="kr.or.ddit.type.CustomDatePropertyEditor"/>
+			</list>
+		</property>
+	</bean>
+
+ㅁ conversionService (kr.or.ddit.type => CustomDateConverter.java)
+   - bean
+	<bean name="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<bean class="kr.or.ddit.type.CustomDateConverter"/>
+			</set>
+		</property>
+	</bean>
+   - 클래스에 Converter<String, Date>인터페이스 구현하기
+		==> org.springframework.core.convert.converter.Converter   
+   - quick pix를 통해 convert메서드를 생성
+   - 메서드 내부에
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+	try {
+		return sdf.parse(source);
+	} catch (ParseException e) {
+		e.printStackTrace();
+	}
+	
+	return null;
+
+ㅁ formatting conversionService
+   - bean
+   <bean name="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+   
+   - vo
+   @DateTimeFormat(pattern="yyyy-MM-dd")
+   private Date reg_dt;
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+★ IOC 끝
 
 1. 프로젝트 신규생성
 2. pom, gitignore, logback.xml 설정파일 복사
@@ -181,11 +253,207 @@ public class SpringContainerTest {
 
 ★ 위 사항의 테스트코드를 정상적으로 생성하여 테스트 코드를 통과하게끔 연습할 것
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ㅁ AOP(Aspect Oriented Programming): 여러 클래스로 분산된 책임(기능)을 별도의 관점
+				     으로 분리/캡슐화 하는 프로그래밍 방법
+   - 로직을 실행하기에 앞서 넣어주고 싶은 비기능 로직을 작성하지 않고 개발한 뒤
+     AOP가 알아서 소스코드에 비기능 로직을 넣어서 컴파일? 시켜준다.
+   - AOP는 OOP(객체지향프로그래밍)를 대체하는 개념이 아닌 보완하는 개념
+
+   - pom.xml
+	<!-- AOP: https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>1.9.4</version>
+	</dependency>
+
+   - ProfilingAspect.java
+	public void befor(JoinPoint joinPoint) { // ==> org.aspectj.lang.JoinPoint
+		logger.debug("profilingAspect.befor()");
+	}
+
+   - application-context-aop-test.xml
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ㅁ 트랜잭션
+   - 선언적 트랜잭션 관리
+	> 소스코드상에서 트랜잭션을 제어하지 않음
+	> 설정을 통해 일괄적으로 트랜잭션을 제어(xml: tx, java: annotation)
+
+ㅁ jdbc
+   - pom.xml
+	<!-- mybatis: https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis</artifactId>
+		<version>3.5.2</version>
+	</dependency>
+
+	<!-- mybatis-spring: https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis-spring</artifactId>
+		<version>2.0.2</version>
+	</dependency>
+
+	<!-- dbcp: https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-dbcp2</artifactId>
+		<version>2.7.0</version>
+	</dependency>
+
+   - context-datasource.xml <== src/main/resource /kr/or/ddit/config/spring
+	// namespaces: context
+	<context:property-placeholder location="classpath:kr/or/ddit/config/mybatis/db.properties"/>
+	<bean name="datasource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.user}"/>
+		<property name="password" value="${jdbc.pass}"/>
+	</bean>
+
+	<bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource"/> <!-- bean 주입 -->
+		<property name="configLocation" value="classpath:kr/or/ddit/config/mybatis/mybatis-config.xml"/>
+	</bean>
+	
+	<bean name="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+
+   - context-transaction.xml <== src/main/resource /kr/or/ddit/config/spring
+	// namespaces: aop, tx
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="datasource"/> <!-- datasource는 context-datasource.xml에 있음 -->
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 메소드 이름별로 트랜잭션에 대한 세부설정 -->
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* kr.or.ddit..service.*.*(..))"/>
+	</aop:config>
+
+   - context-root.xml <== src/main/resource /kr/or/ddit/config/spring
+	// namespaces: context
+	<context:component-scan base-package="kr.or.ddit">
+	</context:component-scan>
+	
+	<context:annotation-config/>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
 
 
-======================================[0911]======================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
