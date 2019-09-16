@@ -6,19 +6,13 @@
 	
 	<typeAliases>
 		<typeAlias alias="user"  type="kr.or.ddit.user.model.User"/>
-<!-- 		<typeAlias alias="board" type="kr.or.ddit.board.model.Board"/> -->
-<!-- 		<typeAlias alias="file"  type="kr.or.ddit.file.model.File"/> -->
-<!-- 		<typeAlias alias="post"  type="kr.or.ddit.post.model.Post"/> -->
-<!-- 		<typeAlias alias="reply" type="kr.or.ddit.reply.model.Reply"/> -->
 		<typeAlias alias="page"  type="kr.or.ddit.common.model.Page"/>
+		<typeAlias alias="lprod" type="kr.or.ddit.lprod.model.Lprod"/>
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="kr/or/ddit/config/mybatis/mapper/user.xml" />
-<!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/board.xml" /> -->
-<!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/file.xml" /> -->
-<!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/post.xml" /> -->
-<!-- 		<mapper resource="kr/or/ddit/config/mybatis/mapper/reply.xml" /> -->
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/user.xml"/>
+		<mapper resource="kr/or/ddit/config/mybatis/mapper/lprod.xml"/>
 	</mappers>
 	
 </configuration>

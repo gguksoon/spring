@@ -408,7 +408,7 @@ public class SpringContainerTest {
    새 접속 -> 접속이름: JMS_TEST / 사용자이름: JMS_TEST/ 비밀번호: java
 
 ㅁ 새로 생성된 테이블 스페이스에 기존 테이블 스페이스를 복사해줘야 한다.
-   - 방법1. 급할 때 사용
+   - 방법1. 급할 때 사용(제약조건 복사 안됨)
 	-- 기존 DB 조회
 	select *
 	  from jms.users;
@@ -436,10 +436,12 @@ public class SpringContainerTest {
 
    ==> kr.or.ddit.user.service UserServiceTest.java
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-
-
-
+ㅁ 실습: buyer, lprod, prod 이관
+   1. 운영DB(JMS) ==> 테스트DB(JMS_TEST)로 복사
+   2. LPROD 이관
+   3. LPROD TEST 이관
 
 
 

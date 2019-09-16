@@ -1,4 +1,4 @@
-package kr.or.ddit.user.dao;
+package kr.or.ddit.user.repository;
 
 import java.util.List;
 

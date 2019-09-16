@@ -16,8 +16,8 @@ import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.common.model.Page;
 import kr.or.ddit.config.test.RootTestConfig;
-import kr.or.ddit.user.dao.IUserDao;
 import kr.or.ddit.user.model.User;
+import kr.or.ddit.user.repository.IUserDao;
 
 public class UserDaoTest extends RootTestConfig {
 

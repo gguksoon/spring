@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.common.model.Page;
-import kr.or.ddit.user.dao.IUserDao;
-import kr.or.ddit.user.dao.UserDao;
 import kr.or.ddit.user.model.User;
+import kr.or.ddit.user.repository.IUserDao;
+import kr.or.ddit.user.repository.UserDao;
 
 @Service
 public class UserService implements IUserService {

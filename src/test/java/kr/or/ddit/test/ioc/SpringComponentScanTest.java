@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.or.ddit.user.dao.IUserDao;
+import kr.or.ddit.user.repository.IUserDao;
 import kr.or.ddit.user.service.IUserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -4,8 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
-import kr.or.ddit.user.dao.IUserDao;
-import kr.or.ddit.user.dao.UserDao;
+import kr.or.ddit.user.repository.IUserDao;
+import kr.or.ddit.user.repository.UserDao;
 import kr.or.ddit.user.service.IUserService;
 import kr.or.ddit.user.service.UserService;
 
