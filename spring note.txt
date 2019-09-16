@@ -443,17 +443,53 @@ public class SpringContainerTest {
    2. LPROD 이관
    3. LPROD TEST 이관
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+ㅁ Spring MVC
 
+ㅁ MVC 흐름
+   - 모든 요청은 DispatcherServlet이 받는다.
+   - Handler Mapping을 통해 요청을 처리할 controller를 찾는다.
+   - Handler Adapter를 통해 controller의 메소드 인자를 준비한다.
+	> Servlet과 다르게 메소드 인자를 비교적 자유롭게 설정 가능하다.
+	  ex) response객체가 필요 없다면 메소드 인자에서 제거 가능하다.
+   - Controller를 실행(service -> dao), view에서 사용할 속성을 model에 저장하고 viewName을 리턴
+	> View객체, ModelAndView객체, collection객체가 리턴 타입이 될 수도 있고,
+	  void도 가능하다.
+   - viewResolver를 통해 응답을 생성할 view객체를 결정
+	> viewResolver는 viewName을 이용하여 처리할 View를 매핑
+	> spring은 view에 의존적이지 않다.
+   - 해당 View객체를 통해 응답 생성
+	> 응답을 생성하는 view는 jsp뿐만 아니라 json, xml도 있다.
+	  (화면은 없고 데이터만 존재하는 경우)
+	> model객체에 담긴 속성은 request에 담는 작업이 이루어진다.
 
+ㅁ MVC 시작하기
+   - pom.xml 설정하기(spring-mvc, spring-mvcweb)
+   - web.xml 설정하기
+	> ctrl + space -> contextloaderlistener
+	> ctrl + space -> dispatcherservlet
+   - servlet-context.xml 설정하기
+	> context-root.xml <== /src/main/resources/kr/or/ddit/config/spring
+	> servlet-context.xml <== /src/main/resources/kr/or/ddit/config/spring
 
+ㅁ MVC 시작하기(사전지식)
+   - spring container에는 계층 구조를 설정할 수 있음
+	> 자식 컨테이너는 부모 컨테이너의 스프링 빈을 참조할 수 있음
+	  (java의 상속과 동일, 부모는 자식 사용불가, 자식은 부모 사용가능)
+	> root container(부모)에는 service bean과 dao bean이 들어감
 
+ㅁ servlet-mapping 처리과정
+   - 서버가 요청을 받을 경우
+	> 요청된 url을 처리할 수 있는 servlet-mapping을 검색
+		>> 검색되면: 해당 서블릿에 위임
+		>> 검색안되면: default servlet에 위임(<url-pattern>/</url-pattern>)
 
+   - spring dispatcherServlet
+	> <url-pattern>/*.nhn</url-pattern>
 
-
-
-
-
+   - url: /user/view
+	> <url-pattern>/</url-pattern>
 
 
 
