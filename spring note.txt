@@ -516,9 +516,21 @@ public class SpringContainerTest {
 		<listener-class>kr.or.ddit.listener.ContextPathInitListener</listener-class>
 	</listener>
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+ㅁ 개발에 유용한 내용 ==> SpringMvcController.java
+	@RequestMapping("requestParam")
+	public String requestParam( 
+		@RequestParam(name = "userId") String user, // 파라미터의 name을 userId로 변경
+		@RequestParam(defaultValue = "10") int page) // page의 기본값이 10이 된다.
+	
+	@RequestMapping("/path/{subpath}") // jsp에서 넘긴 값을 매핑으로 지정
+	public String requestPath( @PathVariable(name = "subpath") String subpath)
 
-
+ㅁ @Controller / @RequestMapping 파라미터
+   - HttpServletRequest, HttpServletResponse, HttpSession
+   - Map(==Model==ModelMap)
+   - Command/form 객체 @ModelAttribute
 
 
 
