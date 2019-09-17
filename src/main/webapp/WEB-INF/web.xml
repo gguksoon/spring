@@ -33,6 +33,11 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
+	<!-- context path 설정: 서버 기동시 application scope에 cp라는 속성에 컨텍스트 패스값을 넣어준다 -->
+	<listener>
+		<listener-class>kr.or.ddit.listener.ContextPathInitListener</listener-class>
+	</listener>
+	
 	<!-- 자동완성: ctrl + space -> dispatcherservlet -->
 	<!-- The front controller of this Spring Web application, responsible for handling all application requests -->
 	<servlet>

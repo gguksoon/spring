@@ -357,6 +357,10 @@ public class SpringContainerTest {
 	
 	<context:annotation-config/>
 
+
+
+
+
 ======================================[0916]======================================
 
 ㅁ 개발자 전용 DB
@@ -495,14 +499,22 @@ public class SpringContainerTest {
 
 
 
+======================================[0917]======================================
 
+ㅁ Spring Controller
+   - 기존 서블릿 기반 개발 시: 여러개의 Controller를 생성하여 각각의 기능을 구현
+   - 스프링 기반 개발 시: 하나의 Controller에서 메서드로 각각의 기능을 구현
 
+ㅁ cp 설정(listener), ContextPath
 
+   - .java 파일
+	src/main/java kr.or.ddit.listener ContextPathInitListener.java
 
-
-
-
-
+   - web.xml
+	<!-- context path 설정: 서버 기동시 application scope에 cp라는 속성에 컨텍스트 패스값을 넣어준다 -->
+	<listener>
+		<listener-class>kr.or.ddit.listener.ContextPathInitListener</listener-class>
+	</listener>
 
 
 
