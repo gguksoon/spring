@@ -1,4 +1,4 @@
-﻿======================================[0909]======================================
+﻿============================================[0909]============================================
 
 ㅁ 스프링 설정파일 
    - .java파일
@@ -41,7 +41,7 @@
 
 
 
-======================================[0910]======================================
+============================================[0910]============================================
 
 ★ 현재 가지고 있는 지식으로 이해할 수 있도록 코드 작성 ★
 
@@ -95,7 +95,7 @@
 ㅁ 명시적 트랜잭션: 개발자가 직접 commit하는 것 ==> sqlSession.commit();
    선언적 트랜잭션: 특정 예외시 자동으로 rollback, 아니면 commit
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ★ 앞으로 사용할 spring 코드 작성 ★
 
@@ -129,7 +129,7 @@ public class SpringContainerTest {
 
    * 4가지가 있지만, singleton만 사용함
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ㅁ annotation-base
    - 모든 빈을 명시적으로 기술하는데는 비용이 크다.
@@ -161,7 +161,7 @@ public class SpringContainerTest {
 
    * @Resource(name="boardDao") <== BoardDao클래스를 사용하는 방법(첫글자 소문자)
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ㅁ 자바 클래스를 스프링 설정파일로 만들기
    * component-scan을 사용하는 것과 자바 클래스를 사용하는 두 가지 방법에 대해
@@ -183,7 +183,7 @@ public class SpringContainerTest {
 
 
 
-======================================[0911]======================================
+============================================[0911]============================================
 
 ㅁ spring에서의 형변환 문제
    - xml 설정 파일에서 value속성을 주입할 때
@@ -249,7 +249,7 @@ public class SpringContainerTest {
    @DateTimeFormat(pattern="yyyy-MM-dd")
    private Date reg_dt;
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ★ IOC 끝
 
@@ -261,7 +261,7 @@ public class SpringContainerTest {
 
 ★ 위 사항의 테스트코드를 정상적으로 생성하여 테스트 코드를 통과하게끔 연습할 것
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ㅁ AOP(Aspect Oriented Programming): 여러 클래스로 분산된 책임(기능)을 별도의 관점
 				     으로 분리/캡슐화 하는 프로그래밍 방법
@@ -284,7 +284,7 @@ public class SpringContainerTest {
 
    - application-context-aop-test.xml
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ㅁ 트랜잭션
    - 선언적 트랜잭션 관리
@@ -361,7 +361,7 @@ public class SpringContainerTest {
 
 
 
-======================================[0916]======================================
+============================================[0916]============================================
 
 ㅁ 개발자 전용 DB
    - 개발자가 로직을 실행했을 때 다른 개발자들과 기획자들에게는 영향이 가지 않도록
@@ -432,7 +432,7 @@ public class SpringContainerTest {
    - 방법2.쿼리문으로 출력
 	해당 테이블 우클릭 - 익스포트 - 스키마 표시 해제 / 저장 영역 해제 - 완료
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ㅁ UserService의 Test코드의 경우 유저의 변동사항이 문제가 될 수 있다.
    ==> setup()에 데이터를 삭제하고 다시 쿼리문을 실행해주도록 해준다.
@@ -440,14 +440,14 @@ public class SpringContainerTest {
 
    ==> kr.or.ddit.user.service UserServiceTest.java
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ㅁ 실습: buyer, lprod, prod 이관
    1. 운영DB(JMS) ==> 테스트DB(JMS_TEST)로 복사
    2. LPROD 이관
    3. LPROD TEST 이관
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ㅁ Spring MVC
 
@@ -499,7 +499,7 @@ public class SpringContainerTest {
 
 
 
-======================================[0917]======================================
+============================================[0917]============================================
 
 ㅁ Spring Controller
    - 기존 서블릿 기반 개발 시: 여러개의 Controller를 생성하여 각각의 기능을 구현
@@ -516,7 +516,7 @@ public class SpringContainerTest {
 		<listener-class>kr.or.ddit.listener.ContextPathInitListener</listener-class>
 	</listener>
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ㅁ 개발에 유용한 내용 ==> SpringMvcController.java
 	@RequestMapping("requestParam")
@@ -536,63 +536,417 @@ public class SpringContainerTest {
 
 
 
+============================================[0918]============================================
 
+ㅁ 중요하진 않지만 유용한 기능
+   - @ModelAttribute: 
+		@RequestMapping이 붙은 메소드가 실행되기 전에 @ModelAttribute메소드가
+		먼저 실행되고 해당 메소드가 리턴하는 값을 Model객체에 자동으로 넣어준다.
+		(해당 컨트롤러에서만 사용가능)
 
+	// 생성
+	@ModelAttribute("rangers")
+	public List<String> rangers() {
+		List<String> rangers = new ArrayList<String>();
+		rangers.add("brown");
+		rangers.add("sally");
+		rangers.add("cony");
+		
+		return rangers;
+	}
 
+	// 모델에 주입(방법1) ==> 형변환해야 함
+	@RequestMapping("view")
+	public String view(Model model) {
+		List<String> rangers = (List<String>) model.asMap().get("rangers");
+		logger.debug("rangers: {}", rangers);
+		return "mvc/view";
+	}
 
+	// 직접 주입(방법2) ==> 더 사용하기 편함
+	@RequestMapping("view")
+	public String view(@ModelAttribute("rangers") List<String> rangers) {
+		logger.debug("rangers: {}", rangers);
+		return "mvc/view";
+	}
 
+   - @SessionAttributes: 
+		@ModelAttribute는 계속 실행되는 반면 @SessionAttributes는 session에
+		주입하여 부담이 줄어든다. (DB를 계속 조회를 할 경우 @ModelAttribute는 부담)
 
+   - @GetMapping, @PostMapping: 
+		@RequestMapping(path = "userListOnlyHalf", method = RequestMethod.GET)를
+		@GetMapping("userListOnlyHalf")로 사용할 수 있다.
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+ㅁ 파일 업로드 File Upload
+   - servlet기반 파일 업로드 설정
+	1. form태그 enctype="multipart/form-data"
+	2. @MultipartConfig
+	3. Part part = request.getPart();
 
+   - pom.xml
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>1.4</version>
+	</dependency>
 
+   - servlet-context.xml <== src/main/resources config/spring
+	<!-- multipartResolver -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5242880"></property> <!-- 5MB -->	
+		<property name="maxUploadSizePerFile" value="26214400"></property>	<!-- 25MB -->
+	</bean>
 
+   - view.jsp
+	<form id="frmPart" action="${cp }/mvc/upload" enctype="multipart/form-data">
+		<input type="text" name="userId" value="brown"/> <br>
+		<input type="file" name="picture"/> <br>
+		<input type="submit" value="전송"/>
+	</form>
 
+   - SpringMvcController.java
+	@RequestMapping("upload")
+	public String upload(String userId, @RequestPart("picture") MultipartFile partFile) {
+		logger.debug("userId: {}", userId);
+		logger.debug("partFile.getName(): {}", partFile.getName());
+		logger.debug("partFile.getOriginalFilename(): {}", partFile.getOriginalFilename());
+		
+		// 업로드 되는 시점의 년/월 폴더를 생성해주고, 파일 경로와 파일 정보를 FileInfo객체에 담아 리턴
+		FileInfo fileInfo = FileUtil.getFileInfo(partFile.getOriginalFilename());
+		
+		try { partFile.transferTo(fileInfo.getFile()); }
+		catch (IllegalStateException | IOException e) { e.printStackTrace(); }
+		
+		return "mvc/view";
+	}
 
+	
+   - FileInfo.java <== 파일업로드를 위해 만든 클래스(VO)
+	public class FileInfo {
+		private File file;		// 업로드 경로를 포함한 파일 객체
+		private String originalFileName;// 업로드한 실제 파일명
+		private String extName;		// 확장자 명(.포함)
 
+		// 생성자
+		public FileInfo(File file, String originalFileName, String extName)
 
+		// getter, setter
+		......
+	}
 
+   - FileUtil.java <== 파일업로드를 위해 만든 클래스(메서드)
+	public class FileUtil {
+		public static FileInfo getFileInfo(String originalFilename) {
+			String path = getPath();
+			
+			String uuidFileName = UUID.randomUUID().toString();
+			String extName = getExtension(originalFilename);
+			File file = new File(path + "/" + uuidFileName + extName);
+			FileInfo fileInfo = new FileInfo(file, originalFilename, extName);
+			
+			return fileInfo;
+		}
 
+		private static String getPath() {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+			String yyyyMM = sdf.format(new Date());
+			String yyyy = yyyyMM.substring(0, 4);
+			String mm = yyyyMM.substring(4, 6);
+			
+			String path = "e:/springUpload/" + yyyy + "/" + mm;
+			
+			File pathFile = new File(path);
+			
+			if(!pathFile.exists()) pathFile.mkdirs();
+			
+			return path;
+		}
+	
+		private static String getExtension(String originalFilename) {
+			String extName = "";
+			if(originalFilename.contains("."))
+				extName = originalFilename.substring(originalFilename.lastIndexOf("."));
+			
+			return extName;
+		}
+	}
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+ㅁ multi parameter
+   - view.jsp
+	<form action="${cp }/mvc/multiParameter" method="post">
+		<input type="text" name="userId" value="brown"/> <br>
+		<input type="text" name="userId" value="sally"/> <br>
 
+		<input type="text" name="addr.addr1" value="대전시 중구 중앙로 76"> <br>
+		<input type="text" name="addr.addr2" value="DDIT"> <br>
 
+		<input type="text" name="addrList[0].addr1" value="대전시 중구 중앙로 76 list1"> <br>
+		<input type="text" name="addrList[0].addr2" value="DDIT list1"> <br>
+		
+		<input type="text" name="addrList[1].addr1" value="대전시 중구 중앙로 76 list2"> <br>
+		<input type="text" name="addrList[1].addr2" value="DDIT list2"> <br>
 
+		<input type="submit" value="전송"/>
+	</form>
+ 
+   - SpringMvcController.java
+	@RequestMapping("multiParameter")
+	public String multiString(String userId,
+				  @RequestParam("userId") List<String> userIdList, 
+				  Main main) {
+		// String으로 받기
+		logger.debug("userId: {}", userId);
+		// 결과 ==> userId: brown,sally
+		
+		// List로 받기
+		logger.debug("userIdList: {}", userIdList);
+		// 결과 ==> userIdList: [brown, sally]
+		
+		// VO로 받기
+		logger.debug("main: {}", main);		
+		// 결과 ==> main: Main [userId=[brown, sally], 
+		//		addr=Addr [addr1=대전시 중구 중앙로 76, addr2=DDIT]]
 
+		return "mvc/view";
+	}
 
+   - Main.java
+	public class Main {
+		private List<String> userId;
+		private Addr addr;
 
+		private List<Addr> addrList;
 
+		// getter, setter
+		.....
 
+		// toString
+		.....
+	}
 
+   - Addr.java
+	public class Addr {
+		private String addr1; // 도로주소
+		private String addr2; // 상세주소
 
+		// getter, setter
+		.....
 
+		// toString
+		.....
+	}
+	
+ㅁ POST방식에서 UTF-8설정(한글깨짐 설정)
+   - web.xml <== maven 프로젝트의 web.xml
+	<!-- character encoding filter -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+ㅁ redirect
+   - SpringMvcController.java
+	@RequestMapping("redirect")
+	public String redirect(String userId, Model model, HttpSession session, RedirectAttributes reAttr) {
+//		model.addAttribute("userId", userId);
+//		session.setAttribute("userId", userId);
+		
+		// redirect시 최초 1회에 한해서 해당 속성값을 유지하고, 읽혀진 뒤 세션에서 해당 속성을 제거함.
+		reAttr.addFlashAttribute("userId", userId); 
+		
+		// 리다이렉트시 파라미터로 전달
+		reAttr.addAttribute("alias", "bear");
 
+ 		return "redirect:/login";
+		// redierct: "redirect:url주소";
+		// forward : "forward:url주소"; ==> 다른 컨트롤러로 forward (http method)에 대해 고려해야함
+		// 원본 요청 get이면 forward 메소드 get (http method에 대해 고려해야함)
+	}
 
+   - view.jsp
+	<form action="${cp }/mvc/redirect">
+		<input type="text" name="userId" value="brown"/> <br>
+		<input type="submit" value="전송"/>
+	</form>
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+ㅁ validator
+   - UserValidator.java
+	public class UserValidator implements Validator{
+	
+		@Override
+		public boolean supports(Class<?> clazz) {
+			return User.class.isAssignableFrom(clazz);
+		}
+	
+		@Override
+		public void validate(Object target, Errors errors) {
+			User user = (User) target;
+			//userId 필드는 null일수 없고, 문자열 길이는 4글자 이상이어야한다.
+			if(user.getUserId() == null || user.getUserId().length() <= 3)
+				errors.rejectValue("userId", "required");//필드명, 에러코드(개발자 정의)
+		}
+	
+	}	
 
+   - SpringMvcController.java
+	@RequestMapping("validator")
+	public String validator(User user, BindingResult result) {
+		// form객체(command, vo)의 검증 결과를 담는 BindingResult객체는
+		// 반드시 메소드 인자 순서에서 form객체 바로 뒤에 위치해야 된다.
+		
+		// validator 실행
+		new UserValidator().validate(user, result);
 
+		if(result.hasErrors()) logger.debug("has Error");
+		else logger.debug("no Error");
+		
+		logger.debug("user: {}", user);
 
+		return "mvc/view";
+	}
 
+    - view.jsp
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+	...
 
+	<form action="${cp }/mvc/validator">
+		<input type="text" name="userId" value="brown">
+		<form:errors path="user.userId"/> <br>
+		<input type="text" name="userNm" value="브라운"> <br>
+		<input type="submit" value="전송"/>
+	</form>
+ 
+   - error.properties <== src/main/resources kr/or/ddit/msg 
+	> 프로퍼티 에디터 설치: help - dd -> add -> name: property editor /
+	  link: http://propedit.sourceforge.jp/eclipse/updates -> PropertiesEditor 체크 -> 설치
 
+	#에러코드.(객체명.) 필드=에러메세지
+	required.userId=사용자 아이디는 null이거나 3글자 이하일 수 없습니다.
 
+   - servlet-context.xml <== src/main/resources kr/or/ddit/config/spring 
+	<!-- resource bundle -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:kr/or/ddit/config/msg/error</value>
+			</list>
+		</property>
+	</bean>
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+ㅁ jsr303(validator)
+   - pom.xml
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-validator</artifactId>
+		<version>5.4.3.Final</version>
+	</dependency>
 
+   - User.java <== vo
+	...
+	@NotNull
+	private String pass;	// 사용자 비밀번호
+	...
 
+   - error.properties <== src/main/resources kr/or/ddit/msg 
+	NotNull.pass=비밀번호는 반드시 입력해야 합니다.
 
+   - view.jsp
+	<form action="${cp }/mvc/jsr303">
+		<input type="text" name="userId" value="brown"> <br>
+		<input type="text" name="userNm" value="브라운"> <br>
+		<input type="submit" value="전송"/> <form:errors path="user.pass"/>
+	</form>
 
+   - SpringMvcController.java
+	@RequestMapping("jsr303")
+	public String jsr303(@Valid User user, BindingResult result) {
+		if(result.hasErrors()) 
+			logger.debug("has Error");
+		else 
+			logger.debug("no Error");
+		
+		return "mvc/view";
+	}
 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
+ㅁ 예외 ==> 컨트롤러마다 있어야 함.. 타입별로 해야 함.. 등의 문제점 ==> ControllerAdvice이용
+   - SpringMvcController.java
+	@RequestMapping("throwException")
+	public String throwException() {
+		int a = 10 / 0;
+		
+		return "mvc/view";
+	}
 
+	// CommonException.java로 이동함	
+//	@ExceptionHandler({ArithmeticException.class}) // 예외 종류 선언
+//	public String exceptionHandler() {
+//		logger.debug("exceptionHandler()");
+//		
+//		return "error/arith";
+//	}
 
+   - arith.jsp <== WEB-INF/views/error
+	<h1>arith.jsp</h1>
 
+   - CommonException.java <== src/main/java kr.or.ddit.controllerAdvice
+	@ControllerAdvice
+	public class CommonException {
 
+		private static final Logger logger = LoggerFactory.getLogger(CommonException.class);
+	
+		@ExceptionHandler({ArithmeticException.class}) // 예외 종류 선언
+		public String exceptionHandler() {
+			logger.debug("exceptionHandler()");
+			
+			return "error/arith";
+		}
+	}
 
+   - servlet-context.xml <== src/main/resources kr/or/ddit/config/spring 
+	<!-- @Controller 어노테이션이 붙은 클래스만 스캔 -->
+	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
+	위 내용을 아래처럼 추가함
+
+	<!-- @Controller, @ControllerAdvice 어노테이션이 붙은 클래스만 스캔 -->
+	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ㅁ ResponseStatus <== 사용자가 만드는 예외
+   - NotFileException.java <== src/main/java kr.or.ddit.exception
+
+   - SpringMvcController.java
+
+	
 
 
 
