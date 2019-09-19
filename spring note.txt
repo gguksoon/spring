@@ -946,30 +946,90 @@ public class SpringContainerTest {
 
    - SpringMvcController.java
 
-	
+ㅁ application 불러오기
+   1. controller에서 메서드에 HttpServletRequest request를 인자로 넣어주기
+   2. request를 이용해 application얻기
+	ServletContext application = request.getServletContext();
+   3. application에 데이터 넣기
+	application.setAttribute("boardList", boardService.getBoardList());
 
 
 
 
 
+============================================[0919]============================================
 
+ㅁ Filter / AOP / Interceptor 비교
+   - Filter
+	> spring container에 포함되지 않음 -> 기본 설정에서는 DI 활용 불가
+					(DelegatingFilterProxy 필터를 이용하면 가능)
 
+   - AOP
+	> 범용적
+	> 일시적은 설정 보다는 어플리케이션 전반에 대한 설정에 적합
 
+   - Interceptor
+	> DI 가능 / 설정 간단
+	> 요청에 대한 전후 처리에 적당
+		>> 컨트롤러 실행 전(preHandle)
+		>> 컨트롤러 실행 후(PostHandle)
+		>> 뷰를 실행한 이후(afterCompletion)
 
+ㅁ Interceptor 구현 방법
+   - class 생성 ==> main/java kr.or.ddit.interceptor PerformanceCheckInterceptor.java
+	> extends HandlerInterceptorAdapter
+   	> 메소드 재정의
+		>> preHandle
+		>> postHandle
+		>> afterCompletion
 
+   - PerformanceCheckInterceptor.java 생성
 
+   - bean 생성 ==> main/resources kr.or.ddit.config.spring context-interceptors.xml
 
+   - web.xml
+	<!-- 자동완성: ctrl + space -> dispatcherservlet -->
+	<!-- The front controller of this Spring Web application, responsible for handling all application requests -->
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:kr/or/ddit/config/spring/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
+	의 내용을 아래와 같이 한줄 추가
 
+	<!-- 자동완성: ctrl + space -> dispatcherservlet -->
+	<!-- The front controller of this Spring Web application, responsible for handling all application requests -->
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				classpath:kr/or/ddit/config/spring/servlet-context.xml
+				classpath:kr/or/ddit/config/spring/servlet-interceptors.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
+ㅁ Interceptor를 이용해 SessionCheckFilter 구현 ==> SessionCheckInterceptor.java
+   - context-interceptors.xml
+	<mvc:interceptor>
+		<mvc:mapping path="/**/"/>
+		<mvc:exclude-mapping path="/login"/> <!-- 로그인 화면, 로그인 요청 -->
+		<mvc:exclude-mapping path="/css/**"/>
+		<mvc:exclude-mapping path="/js/**"/>
+		<mvc:exclude-mapping path="/bootstrap/**"/>
+		<mvc:exclude-mapping path="/error/**"/>
+		<bean class="kr.or.ddit.interceptor.SessionCheckInterceptor"/>
+	</mvc:interceptor>
 
-
-
-
-
-
-
-
+   - SessionCheckInterceptor.java
 
 
 
