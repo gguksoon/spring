@@ -59,7 +59,7 @@
 
 <body>
 	<!-- 개발자 입장에서 데이터를 전송하기 위하여 사용하는 form -->
-	<form id="frm" action="${cp }/user" method="get">
+	<form id="frm" action="${cp }/user/user" method="post">
 		<input type="hidden" id="userId" name="userId"/>
 	</form>
 	

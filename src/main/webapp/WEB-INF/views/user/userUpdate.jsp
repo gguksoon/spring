@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,12 +50,12 @@
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h2 class="sub-header">사용자 수정</h2>
-				<form id="frm" class="form-horizontal" role="form" action="${cp }/userUpdate" method="post" enctype="multipart/form-data">
+				<form id="frm" class="form-horizontal" role="form" action="${cp }/user/userUpdate" method="post" enctype="multipart/form-data">
 
 					<div class="form-group">
 						<label for="userId" class="col-sm-2 control-label"></label>
 						<div class="col-sm-10">
-							<img src="${cp }/userPicture?userId=${user.userId}"/>
+							<img src="${cp }/user/userPicture?userId=${user.userId}"/>
 						</div>
 					</div>
 					
@@ -90,7 +91,7 @@
 					<div class="form-group">
 						<label for="reg_dt" class="col-sm-2 control-label">생일</label>
 						<div class="col-sm-10">
-							<input type="date" class="form-control" id="reg_dt" name="reg_dt" placeholder="생일" value="${user.reg_dt_fmt }">
+							<input type="date" class="form-control" id="reg_dt" name="reg_dt" placeholder="생일" value="<fmt:formatDate value="${user.reg_dt }" pattern="yyyy-MM-dd"/>">
 						</div>
 					</div>
 					

@@ -21,7 +21,6 @@
 <script>
 	$(function() {
 		$("#updateBtn").on("click", function() {
-			console.log($("#paramId").val());
 			$("#frm").submit();
 		});
 	})
@@ -31,8 +30,8 @@
 <body>
 
 	<!-- 개발자 입장에서 데이터를 전송하기 위하여 사용하는 form -->
-	<form id="frm" action="${cp }/userUpdate" method="get">
-		<input type="hidden" id="paramId" name="paramId" value="${user.userId}"/>
+	<form id="frm" action="${cp }/user/userUpdate" method="get">
+		<input type="hidden" id="userId" name="userId" value="${user.userId}"/>
 	</form>
 	
 	<!-- header -->
@@ -53,7 +52,7 @@
 						<label for="userId" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
 <%-- 							<img src="${cp }${user.realfilename2 }"/> --%>
-							<img src="${cp }/userPicture?userId=${user.userId}"/>
+							<img src="${cp }/user/userPicture?userId=${user.userId}"/>
 						</div>
 					</div>
 					

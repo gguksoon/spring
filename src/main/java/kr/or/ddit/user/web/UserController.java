@@ -1,21 +1,39 @@
 package kr.or.ddit.user.web;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.common.model.Page;
+import kr.or.ddit.user.model.User;
+import kr.or.ddit.user.model.UserValidator;
 import kr.or.ddit.user.service.IUserService;
+import kr.or.ddit.util.FileUtil;
+import kr.or.ddit.util.model.FileInfo;
 
 @RequestMapping("user/")
 @Controller
 public class UserController {
 
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@Resource(name = "userService")
 	private IUserService userService;
 	
@@ -88,4 +106,142 @@ public class UserController {
 		return "user/userPagingList";
 	}
 	
+	/**
+	* Method : user
+	* 작성자 : JO MIN SOO
+	* 변경이력 :
+	* @param model
+	* @param userId
+	* @return
+	* Method 설명 : 유저 정보 출력
+	*/
+	@RequestMapping("user")
+	public String user(Model model, String userId) {
+		model.addAttribute("user", userService.getUser(userId));
+		
+		return "user/user";
+	}
+	
+	/**
+	* Method : userPicture
+	* 작성자 : JO MIN SOO
+	* 변경이력 :
+	* @param userId
+	* @param response
+	* @throws IOException
+	* Method 설명 : 유저 사진 출
+	*/
+	@RequestMapping("userPicture")
+	public void userPicture(String userId, HttpServletResponse response) throws IOException {
+		User user = userService.getUser(userId);
+		
+		ServletOutputStream sos = response.getOutputStream();
+		
+		File picture = new File(user.getRealfilename());
+		FileInputStream fis = new FileInputStream(picture);
+		
+		byte[] buff = new byte[512];
+		int len = 0;
+		
+		while( (len = fis.read(buff, 0, 512)) != -1 ) {
+			sos.write(buff, 0, len);
+		}
+		
+		fis.close();
+	}
+
+	/**
+	* Method : userFormView
+	* 작성자 : JO MIN SOO
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 등록 화면 요청
+	*/
+	@GetMapping("userForm")
+	public String userFormView() {
+		
+		return "user/userForm";
+	}
+	
+	/**
+	* Method : userForm
+	* 작성자 : JO MIN SOO
+	* 변경이력 :
+	* @param user
+	* @param result
+	* @param picture
+	* @return
+	* Method 설명 : 사용자 등록 요청
+	*/
+	@PostMapping("userForm")
+	public String userForm(User user, BindingResult result,
+						   @RequestPart("picture") MultipartFile picture) {
+		
+		new UserValidator().validate(user, result);
+		
+		if(result.hasErrors()) { // validate 실패
+			return "user/userForm";
+		} else { // validate 통과
+			FileInfo fileInfo = FileUtil.getFileInfo(picture.getOriginalFilename());
+			
+			// 첨부된 파일이 있을 경우
+			if(picture.getSize() > 0) {
+				try {
+					picture.transferTo(fileInfo.getFile());
+					user.setFilename(fileInfo.getOriginalFileName()); // originalFileName
+					user.setRealfilename(fileInfo.getFile().getPath());
+					
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			int insertCnt = userService.insertUser(user);
+			
+			if(insertCnt == 1) { // redirect
+				return "redirect:/user/user?userId=" + user.getUserId();
+			
+			} else { // forward 
+				return "user/userForm";
+			}
+		}
+	}
+
+	@GetMapping("userUpdate")
+	public String updateUserView(Model model, String userId) {
+		model.addAttribute("user", userService.getUser(userId));
+		
+		return "user/userUpdate";
+	}
+	
+	@PostMapping("userUpdate")
+	public String updateUser(User user, @RequestPart("picture") MultipartFile picture) {
+		User dbUser = userService.getUser(user.getUserId());
+		FileInfo fileInfo = FileUtil.getFileInfo(picture.getOriginalFilename());
+		logger.debug("{}", user);
+		
+		if(picture.getSize() > 0) {	// 첨부된 파일이 있을 경우
+			try {
+				picture.transferTo(fileInfo.getFile());
+				user.setFilename(fileInfo.getOriginalFileName()); // originalFileName
+				user.setRealfilename(fileInfo.getFile().getPath());
+				
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		} else { // 첨부된 파일이 없는 경우
+			user.setFilename(dbUser.getFilename());
+			user.setRealfilename(dbUser.getRealfilename());
+			user.setRealfilename2(dbUser.getRealfilename2());
+		}
+		
+		int updateCnt = userService.updateUser(user);
+		
+		if(updateCnt == 1) { // redirect
+			return "redirect:/user/user?userId=" + user.getUserId();
+		
+		} else { // forward 
+			return "user/userForm";
+		}
+	}
 }
