@@ -1016,6 +1016,7 @@ public class SpringContainerTest {
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	==> interceptors를 계속 불러오면 프로그래밍단계에서 귀찮으므로 주석해놨음.
 
 ㅁ Interceptor를 이용해 SessionCheckFilter 구현 ==> SessionCheckInterceptor.java
    - context-interceptors.xml
@@ -1030,6 +1031,161 @@ public class SpringContainerTest {
 	</mvc:interceptor>
 
    - SessionCheckInterceptor.java
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ㅁ JSON(JavaScript Object Notation)
+	ex) var user = {userId : "brown", userNm : "브라운"};
+	    user.userId ==> brown
+	    var str = JSON.stringify(user) ==> {"userId":"brown"} // 문자열이 됨
+	    JSON.parse(str) // json객체가 됨
+
+ㅁ AJAX(Asynchronous JavaScript and XML)
+	==> 옛날엔 xml파일로 했지만 데이터에 붙는 것들이 많아서 무거워짐
+	==> XML방식: <books>
+		   	   <book>
+			      <title> 태백산맥 </title>
+			      <author> 조정래 </author>
+			   </book>
+		     </books>
+
+	==> json방식: {title: "태백산맥", author: "조정래"}
+
+ㅁ jackson databind ( java object -> json )
+   - pom.xml
+	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.9.9.3</version>
+	</dependency>
+
+   - view resolver 추가 ==> servlet-context.xml
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="1"/> <!-- value가 낮을수록 우선순위가 높다. -->
+	</bean>
+
+	<!-- view resolver : beanNameViewResolver (order 0) -->
+	<!-- controller가 리턴하는 viewName과 일치하는 spring bean이 있으면(view) 해당 view객체를 통해 응답을 생성하도록 한다. -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+	</bean>
+
+	<!-- model객체에 있는 속성들을 json문자열로 응답을 생성 -->
+	<bean name="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
+
+   - SpringMvcView.java
+	@RequestMapping("jsonView") // 이게 더 좋은 방식
+	public String jsonView(Model model) {
+		List<String> rangers = new ArrayList<String>();
+		rangers.add("brown");
+		rangers.add("cony");
+		rangers.add("sally");
+		
+		model.addAttribute("rangers", rangers);
+		
+		return "jsonView"; // servlet-context.xml에 정의했음
+	}
+
+	@RequestMapping("jsonView2") // 이게 더 별로인 방식
+	public View jsonView2(Model model) { // org.springframework.web.servlet.View;
+		List<String> rangers = new ArrayList<String>();
+		rangers.add("brown");
+		rangers.add("cony");
+		rangers.add("sally");
+		
+		model.addAttribute("rangers", rangers);
+
+		return new MappingJackson2JsonView();
+	}
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ㅁ FileDownloadView
+   - FileDownloadView.java ==> main/java kr.or.ddit.view
+	> extends AbstractView
+
+	> renderMergedOutputModel 오버라이딩
+	// model: 개발자가 controller메소드에서 등록한 속성들이 저장됨
+	@Override
+	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// 고정된 이미지를 응답으로 생성
+		// 파일 전송임을 알려주는 헤더 정보 설정
+		
+		// 컨트롤러 메소드에서 추가한 속성
+		String pictureName = (String)model.get("pictureName");
+		
+		if(pictureName == null) 
+			pictureName = "noimage.png";
+		
+		response.setHeader("content-disposition", "attachment;filename=" + pictureName);
+		response.setContentType("application/octet-stream"); // 바이너리로 요청이 전송됨
+		
+		File file = new File("e:/rangers/" + pictureName);
+		FileInputStream fis = new FileInputStream(file);
+		ServletOutputStream sos = response.getOutputStream();
+		
+		byte[] buffer = new byte[512];
+		int len = 0;
+		
+		while( (len = fis.read(buffer, 0, 512)) != -1 ) {
+			sos.write(buffer, 0, len);
+		}
+		
+		fis.close();
+	}
+
+   - servlet-context.xml
+	<!-- fileDownloadView: 고정된 이미지를 다운로드(sally.png) -->
+	<bean name="fileDownloadView" class="kr.or.ddit.view.FileDownloadView"/>
+
+   - SpringMvcController.java
+	@RequestMapping("fileDownloadView")
+	public String fileDownloadView() {
+		return "fileDownloadView";
+	}
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
