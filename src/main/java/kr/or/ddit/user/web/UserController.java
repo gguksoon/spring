@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -99,8 +100,6 @@ public class UserController {
 		
 		Map<String, Object> resultMap = userService.getUserPagingList(page);
 		
-//		model.addAttribute("userList", (List<User>) resultMap.get("userList"));
-//		model.addAttribute("paginationSize", (Integer) resultMap.get("paginationSize"));
 		model.addAllAttributes(resultMap); // 위 두가지 내용을 한번에 넣기
 		
 		return "user/userPagingList";
@@ -243,5 +242,43 @@ public class UserController {
 		} else { // forward 
 			return "user/userForm";
 		}
+	}
+	
+	// Ajax 사용자 페이징 리스트 조회
+	@GetMapping("userPagingListAjax")
+	public String userPagingListAjax(Page page, Model model) {
+		model.addAttribute("pageVo", page);
+		
+		Map<String, Object> resultMap = userService.getUserPagingList(page);
+		
+		model.addAllAttributes(resultMap); // 위 두가지 내용을 한번에 넣기
+		
+		return "jsonView";
+	}
+	
+	@RequestMapping("userPagingListAjaxView")
+	public String userPagingListAjaxView() {
+		
+		
+		return "user/userPagingListAjaxView";
+	}
+	
+	/**
+	* Method : userPagingListHtmlAjax
+	* 작성자 : JO MIN SOO
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 페이징 리스트의 결과를 html로 생성한다.
+	*/
+	@RequestMapping("userPagingListHtmlAjax")
+	public String userPagingListHtmlAjax(@RequestParam(defaultValue = "1") int page,
+										 @RequestParam(defaultValue = "10") int pagesize, 
+										 Model model) {
+		
+		Page pageVo = new Page(page, pagesize);
+		model.addAllAttributes(userService.getUserPagingList(pageVo));
+		model.addAttribute("pageVo", pageVo);
+		
+		return "user/userPagingListHtmlAjax";
 	}
 }
