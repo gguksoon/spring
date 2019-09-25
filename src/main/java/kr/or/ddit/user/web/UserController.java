@@ -104,7 +104,16 @@ public class UserController {
 		
 		model.addAllAttributes(resultMap); // 위 두가지 내용을 한번에 넣기
 		
-		return "user/userPagingList";
+//		return "user/userPagingList"; // internalResourceViewResolver를 통한 응답
+		return "tiles.userPagingList";
+		
+		// viewResolver order에 따라
+		// 1. tilesViewResolver가 tiles definition파일 중에
+		//	  viewName과 일치하는 definition 이름을 검색
+		//	  1-1. 검색이 될 경우 해당 definition을 이용하여 응답생성
+		//	  1-2. 검색이 안 될 경우 다음 우선순위를 갖는 viewResolver가 처리
+		// 2. beanNameViewResolver
+		// 3. interResourceViewResolver
 	}
 	
 	/**
@@ -120,7 +129,8 @@ public class UserController {
 	public String user(Model model, String userId) {
 		model.addAttribute("user", userService.getUser(userId));
 		
-		return "user/user";
+//		return "user/user"; // internalResourceViewResolver를 통한 응답
+		return "tiles.user";
 	}
 	
 	/**

@@ -231,5 +231,9 @@ public class SpringMvcController {
 		return "fileDownloadView";
 	}
 	
+	@RequestMapping("i18n")
+	public String i18n() {
+		return "mvc/view";
+	}
 	
 }
