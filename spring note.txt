@@ -1136,9 +1136,23 @@ public class SpringContainerTest {
 		fis.close();
 	}
 
-   - servlet-context.xml
+   - servlet-context.xml ★★★★★
+	<!-- view resolver보다 우선순위가 높아야 한다!!!!!! -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+	</bean>
+
+	<!-- view resolver --> <-- 한줄만 추가했음
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+추가내용==>	<property name="order" value="1"/> <!-- value가 낮을수록 우선순위가 높다. -->
+		<property name="prefix" value="/WEB-INF/views/"/> <!-- 접두어 --> <!-- WEB-INF는 외부에서 접근불가(내부는 가능) -->
+		<property name="suffix" value=".jsp"/> <!-- 접미어 -->
+	</bean>
+
 	<!-- fileDownloadView: 고정된 이미지를 다운로드(sally.png) -->
 	<bean name="fileDownloadView" class="kr.or.ddit.view.FileDownloadView"/>
+
+	
 
    - SpringMvcController.java
 	@RequestMapping("fileDownloadView")
@@ -1165,30 +1179,80 @@ public class SpringContainerTest {
 		});
 	}
 
-	> 	
-
-
 	
 
 
 
+============================================[0919]============================================
+
+1. 문서작업
+	sql 17.4.1
+	tomcat 7.0.73 ??
+	oracle 11g XE
+	6. SE
+2. 프로젝트 압축
+3. 테스트 시나리오 날짜만 변경해서
+4. 2번 이름만 바꿔서 
+5. coverage.. 
+6. 수업시간에
+7. 수업시간에
+
+25일 전까지 제출
 
 
 
 
 
+============================================[0925]============================================
 
+ㅁ 남은 수업
+   - ajax
+   - xml -> java
+   - 배치(과제)
+   - 애플리케이션 통합(과제)
 
+ㅁ ajax
+   - js
+	function getUserListRequestBody(page, pagesize) {
+		var param = {};
+		param.page = page;
+		param.pagesize = pagesize;
+		console.log("param: ", param);
+		
+		$.ajax({
+// 			url: "${cp}/user/userPagingListAjax",
+			url: "${cp}/user/userPagingListAjaxRequestBody",
+			contentType: "application/json", // default: 'application/x-www-form-urlencoded; charset=UTF-8'
+			dataType: "json",
+			method: "post",
+// 			data: "page=" + page + "&pagesize=" + pagesize,
+			data: JSON.stringify(param), // 파라미터 ==> json
+			success: function(data) {
+				// 유저 리스트 html 생성
+				createUserListTbody(data.userList);
+				// 페이지 네이션 html 생성
+				createPagination(data.pageVo, data.paginationSize);
+			}
+		});
+	}
 
+   - controller ==> requestBody와 responseBody 사용
+	@PostMapping("userPagingListAjaxRequestBody")
+	@ResponseBody // 응답을 resultMap으로 해주기 위해 어노테이션 적용
+	public Map<String, Object> userPagingListAjaxRequestBody(@RequestBody Page page, Model model) {
+		Map<String, Object> resultMap = userService.getUserPagingList(page);
+		
+//		model.addAllAttributes(resultMap); // 위 두가지 내용을 한번에 넣기
+//		model.addAttribute("pageVo", page);
+		
+		resultMap.put("pageVo", page);
+		
+		// model객체에 넣지 않고 collection객체를 직접 return
+		return resultMap;
+	}
 
-
-
-
-
-
-
-
-
+   - 요청: json/xml 문자열  ==>  spring framework  ==>  java객체(마샬링)
+     응답: json/xml 문자열  <==  spring framework  <==  java객체(언마샬링)
 
 
 

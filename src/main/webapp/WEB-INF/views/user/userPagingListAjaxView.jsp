@@ -72,11 +72,34 @@
 		});
 	} 
 	
+	function getUserListRequestBody(page, pagesize) {
+		var param = {};
+		param.page = page;
+		param.pagesize = pagesize;
+		console.log("param: ", param);
+		
+		$.ajax({
+// 			url: "${cp}/user/userPagingListAjax",
+			url: "${cp}/user/userPagingListAjaxRequestBody",
+			contentType: "application/json", // default: 'application/x-www-form-urlencoded; charset=UTF-8'
+			dataType: "json",
+			method: "post",
+// 			data: "page=" + page + "&pagesize=" + pagesize,
+			data: JSON.stringify(param), // 파라미터 ==> json
+			success: function(data) {
+				// 유저 리스트 html 생성
+				createUserListTbody(data.userList);
+				// 페이지 네이션 html 생성
+				createPagination(data.pageVo, data.paginationSize);
+			}
+		});
+	}
+	
 	// ajax call을 통해 page, pagesize하는 사용자 데이터를 가져온다.
 	function getUserList(page, pagesize) {
 		$.ajax({
 			url: "${cp}/user/userPagingListAjax",
-			data: "page=" + page + "&pagesize=" + pagesize,
+			data: "page=" + page + "&pagesize=" + pagesize, // 파라미터 ==> json
 			success: function(data) {
 				// 유저 리스트 html 생성
 				createUserListTbody(data.userList);

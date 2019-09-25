@@ -16,10 +16,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.common.model.Page;
@@ -256,9 +258,23 @@ public class UserController {
 		return "jsonView";
 	}
 	
-	@RequestMapping("userPagingListAjaxView")
-	public String userPagingListAjaxView() {
+	// Ajax 사용자 페이징 리스트 조회
+	@PostMapping("userPagingListAjaxRequestBody")
+	@ResponseBody // 응답을 resultMap으로 해주기 위해 어노테이션 적용
+	public Map<String, Object> userPagingListAjaxRequestBody(@RequestBody Page page, Model model) {
+		Map<String, Object> resultMap = userService.getUserPagingList(page);
 		
+//		model.addAllAttributes(resultMap); // 위 두가지 내용을 한번에 넣기
+//		model.addAttribute("pageVo", page);
+		
+		resultMap.put("pageVo", page);
+		
+		// model객체에 넣지 않고 collection객체를 직접 return
+		return resultMap;
+	}
+	
+	@RequestMapping("userPagingListAjaxView")
+	public String userPagingListStringAjaxView() {
 		
 		return "user/userPagingListAjaxView";
 	}
