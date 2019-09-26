@@ -48,9 +48,33 @@
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 ㅁ 깃 연동(브랜치 생성, git bash이용)
+   $ cd ~~~~~ 프로젝트 이름으로 이동
    $ git init
    $ git checkout -b spring_batch
    & git status
    & git add -A    // 숨김파일 여부 상관 없이 추가
    & git status
    & git commit -m "spring 배치1"
+
+   & git remote add origin https://github.com/gguksoon/spring
+   & git remote -v
+   & git push -u origin spring_batch
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ㅁ 비밀번호 암호화 배치 --> spring_batch2 브랜치에서 진행
+			    ($ git checkout -b spring_batch2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

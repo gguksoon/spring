@@ -1,5 +1,4 @@
-package kr.or.ddit.batch.simple;
-
+package kr.or.ddit.batch.user;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,24 +13,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
+		"classpath:kr/or/ddit/config/spring/context-datasource.xml",
 		"classpath:kr/or/ddit/config/spring/context-batch.xml"
-		})
-public class RangerJobTest {
+})
+public class UpdatePassJobTest {
 
-	// 스프링 컨테이너에 하나의 job이 있을 때 테스트가 가능한 방법
-	// 여러개의 테스트가 있을 경우 개별 job과 jobLauncher를 주입받아서 직접 실행
 	@Autowired
 	private JobLauncherTestUtils jobLauncherTestUtils;
 	
 	@Test
-	public void rangerJobTest() throws Exception {
+	public void updatePassJobTest() throws Exception {
 		/***Given***/
 		
 		/***When***/
-		JobExecution jobExcution = jobLauncherTestUtils.launchJob();
+		JobExecution jobExecution = jobLauncherTestUtils.launchJob();
 
 		/***Then***/
-		assertEquals(ExitStatus.COMPLETED, jobExcution.getExitStatus());
+		assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
 	}
 
 }
