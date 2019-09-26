@@ -1,0 +1,56 @@
+============================================[0926]============================================
+
+ㅁ 배치(일괄처리) 프로그램
+   - 연속적으로 이어져 진행되는 작업들을 하나의 작업 단위로 패키징하여 처리하는 행위
+	(주기적으로 실행되는 작업을 의미하기도 함)
+   - 인사 발령에 의한 보직자 변경시 결재선 자동 변경 배치
+	> 기존 결재선 삭제(팀장 - 부장 - 임원 - 사장)
+	> 각 사원의 조직정보를 바탕으로 사원(조직)별 결재라인 계산
+	> 계산된 결재선 입력(생성)
+   - 이기종 시스템간 조직 / 인사 데이터 연동을 위한 데이터 전송 배치
+	> 마스터 인사 / 조직 시스템 정보 조회
+	> legacy 인사 / 조직 정보 삭제
+   - 실적 자동 생성 배치
+	> 매달 1일 고객의 애음 주기 정보 조회
+	> 당월 날짜에 해당하는 요일별 제품
+
+ㅁ spring batch
+   - step ==> 읽기(reader), 가공(processor), 작성(writer)
+      |
+     job
+      |
+     jobLauncher
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ㅁ
+
+   - context-batch.xml에 jobrepository, joblauncher, transactionManager 빈 등록
+
+   - RangerReader.java, RangerProcessor.java, RangerWriter.java 생성
+
+   - context-batch.xml에 위에서 생성한 reader, processor, writer 빈 등록
+
+   - context-batch.xml에 Namespaces에 batch 추가 후 job 추가
+
+   - Main.java 생성
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ㅁ
+
+   - context-scheduler.xml에 bean과 task(Namespaces에서 task추가)생성
+
+   - MainTask.java 생성
+
+   - server에 프로젝트를 추가하여 실행
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+ㅁ 깃 연동(브랜치 생성, git bash이용)
+   $ git init
+   $ git checkout -b spring_batch
+   & git status
+   & git add -A    // 숨김파일 여부 상관 없이 추가
+   & git status
+   & git commit -m "spring 배치1"
